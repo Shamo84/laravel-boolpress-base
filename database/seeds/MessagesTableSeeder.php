@@ -15,9 +15,9 @@ class MessagesTableSeeder extends Seeder
     {
         for ($i=0; $i < 10; $i++) {
           $newMessage = new Message();
-          $newMessage->title = $faker->title;
+          $newMessage->title = $faker->realText($maxNbChars = 50, $indexSize = 2);
           $newMessage->content = $faker->paragraph;
-          $newMessage->sender = $faker->name;
+          $newMessage->sender = $faker->title . $faker->name;
           $newMessage->save();
         }
     }
