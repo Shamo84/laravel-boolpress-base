@@ -10,7 +10,7 @@
   <div class="messages">
     @foreach ($messages as $message)
       <div class="message">
-        <h2>Titolo: {{$message->title}}</h2>
+        <h2>Title: {{$message->title}}</h2>
         <p>Content: {{$message->content}}</p>
         <h3>Sender: {{$message->sender}}</h3>
         <span>Created at: {{$message->created_at}}</span>
