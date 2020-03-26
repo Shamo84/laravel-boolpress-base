@@ -11,10 +11,11 @@
       @foreach ($users as $user)
         <div class="user">
           <h2>Nome: {{$user->name}}</h2>
+          <img src="{{$user->avatar->photo}}" alt="">
           <span>ID: {{$user->id}}</span>
           <h3>E-Mail: {{$user->email}}</h3>
           <h3>Password: {{$user->password}}</h3>
-          <span>Created at: {{$user->created_at}}</span>
+          <p>Created at: {{$user->created_at}}</p>
           @foreach ($user->photo as $url)
             <img src="{{$url->url}}" alt="">
           @endforeach
