@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::resource('messages', 'MessageController');
+Route::resource('users', 'UserController');
+Route::resource('photos', 'PhotoController');
