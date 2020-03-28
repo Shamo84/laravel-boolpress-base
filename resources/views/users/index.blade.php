@@ -15,9 +15,13 @@
           <span>ID: {{$user->id}}</span>
           <h3>E-Mail: {{$user->email}}</h3>
           <h3>Password: {{$user->password}}</h3>
-          <p>Created at: {{$user->created_at}}</p>
-          @foreach ($user->photo as $url)
-            <img src="{{$url->url}}" alt="">
+          @foreach ($user->messages as $message)
+            <h3>{{$message->title}}</h3>
+            <p>{{$message->content}}</p>
+            @foreach ($message->photos as $photo)
+              <img src="{{$photo->url}}" alt="">
+            @endforeach
+            <p>Created at: {{$message->created_at}}</p>
           @endforeach
         </div>
       @endforeach

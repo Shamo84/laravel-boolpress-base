@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Photo;
 use App\User;
+use App\Message;
 
 class PhotosTableSeeder extends Seeder
 {
@@ -14,11 +15,12 @@ class PhotosTableSeeder extends Seeder
     public function run()
     {
       for ($i=0; $i < 10; $i++) {
-        $users = User::all();
+        $user = User::inRandomOrder()->first();
+        $message = $user->messages->random();
         $newPhoto = new Photo;
         $newPhoto->url = "https://picsum.photos/id/" . rand(1, 100) . "/300/200";
-        $newPhoto->user_id = rand(1, 3);
-        $newPhoto->message_id = rand(1, $users->find($newPhoto->user_id)->get()->messages->count());
+        $newPhoto->user_id = $user->id;
+        $newPhoto->message_id = $message->id;
         $newPhoto->save();
       }
     }
