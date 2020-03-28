@@ -12,7 +12,6 @@
       <div class="message">
         <h2>Title: {{$message->title}}</h2>
         <p>Content: {{$message->content}}</p>
-        <h3>Sender: {{$message->sender}}</h3>
         <span>Created at: {{$message->created_at}}</span>
       </div>
     @endforeach

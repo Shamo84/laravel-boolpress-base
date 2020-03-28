@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Faker\Generator as Faker;
 use App\Photo;
+use App\User;
 
 class PhotosTableSeeder extends Seeder
 {
@@ -11,12 +11,14 @@ class PhotosTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-      for ($i=0; $i < 8; $i++) {
+      for ($i=0; $i < 10; $i++) {
+        $users = User::all();
         $newPhoto = new Photo;
         $newPhoto->url = "https://picsum.photos/id/" . rand(1, 100) . "/300/200";
         $newPhoto->user_id = rand(1, 3);
+        $newPhoto->message_id = rand(1, $users->find($newPhoto->user_id)->get()->messages->count());
         $newPhoto->save();
       }
     }

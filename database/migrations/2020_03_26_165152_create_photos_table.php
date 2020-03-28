@@ -15,9 +15,9 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreignId('message_id')->constrained()->onDelete('cascade');
+            $table->foreignId('message_id')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('message_id')->references('id')->on('messages');
             $table->string('url');
             $table->timestamps();

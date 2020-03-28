@@ -19,7 +19,7 @@ class Message extends Model
     return $this->belongsTo('App\User');
   }
 
-  public function photo()
+  public function photos()
   {
     return $this->hasMany('App\Photo');
   }
