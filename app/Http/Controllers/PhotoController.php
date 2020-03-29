@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Photo;
+use App\Message;
 use Illuminate\Http\Request;
 
 class PhotoController extends Controller
@@ -24,7 +25,8 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        //
+      $messages = Message::all()->sortBy("user_id");
+      return view("photos.create", compact("messages"));
     }
 
     /**
@@ -35,7 +37,17 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $data = $request->all();
+
+      $message = Message::find($data["message_id"]);
+      $newPhoto = new Photo;
+      $newPhoto->message_id = $message->id;
+      $newPhoto->user_id = $message->user_id;
+      $newPhoto->url = $data["path"];
+      $saved = $newPhoto->save();
+      if($saved) {
+          return redirect()->route('users.index');
+      }
     }
 
     /**
