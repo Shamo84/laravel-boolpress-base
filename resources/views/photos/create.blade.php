@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{{asset("css/app.css")}}">
+
   <title>Document</title>
 </head>
 <body>
-  <form class="form-control" action="{{route("photos.store")}}" method="post">
+  <form class="form-group" action="{{route("photos.store")}}" method="post">
     @csrf
    @method('POST')
-    <select class="" name="message_id">
+    <select class="form-control" name="message_id">
       @foreach ($messages as $message)
         <option value="{{$message->id}}">{{$message->user->name}} - {{$message->title}}</option>
       @endforeach

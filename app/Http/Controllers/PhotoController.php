@@ -38,8 +38,10 @@ class PhotoController extends Controller
     public function store(Request $request)
     {
       $data = $request->all();
-
       $message = Message::find($data["message_id"]);
+      if (empty($data["path"])) {
+       return back()->withInput()->with("errors", "non hai inserito il path dell'immagine");
+      }
       $newPhoto = new Photo;
       $newPhoto->message_id = $message->id;
       $newPhoto->user_id = $message->user_id;

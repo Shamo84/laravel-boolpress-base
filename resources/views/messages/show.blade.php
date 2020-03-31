@@ -13,10 +13,6 @@
     <img src="{{$photo->url}}" alt="">
   @endforeach
   <p>Created at: {{$message->created_at}}</p>
-  <form class="" action="{{route("messages.show", $message->id)}}" method="head">
-    @csrf
-    @method('HEAD')
-    <input type="submit" name="add" value="ADD NEW PHOTO">
-  </form>
+
 </body>
 </html>
